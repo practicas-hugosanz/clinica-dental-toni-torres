@@ -106,6 +106,11 @@
     sync();
   }
   $$('a[data-motivo]').forEach(function (a) { a.addEventListener('click', function () { setMotivo(a.getAttribute('data-motivo')); }); });
+  // Si se llega desde un tratamiento (pedir-cita.html?motivo=Implantes), se deja ya elegido
+  try {
+    var qMotivo = new URLSearchParams(window.location.search).get('motivo');
+    if (qMotivo && MOTIVOS.indexOf(qMotivo) > -1) setMotivo(qMotivo);
+  } catch (err) { /* navegador sin URLSearchParams: el motivo se elige a mano */ }
 
   // Calendario
   var cal = $('#cal');
@@ -289,4 +294,26 @@
   });
 
   renderCal(); renderSlots(); sync();
+})();
+
+/* Detalles de interfaz: cabecera al hacer scroll y aparición suave de las secciones */
+(function () {
+  'use strict';
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  if (!('IntersectionObserver' in window)) return;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function (el) {
+    var p = el.parentElement;
+    var siblings = p.querySelectorAll(':scope > [data-reveal]');
+    var idx = Array.prototype.indexOf.call(siblings, el);
+    el.style.setProperty('--d', Math.min(idx, 5) * 70 + 'ms');
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function (el) { io.observe(el); });
 })();

@@ -1,0 +1,21 @@
+/* Font Awesome Free 6.5.2 (https://fontawesome.com, licencia: iconos CC BY 4.0, fuentes SIL OFL 1.1).
+ * Subconjunto alojado en la propia web con solo los iconos que se usan: carga más rápido y no conecta con terceros.
+ * Para añadir un icono: incluir su código en el subset de la fuente y su regla .fa-nombre:before aquí. */
+@font-face { font-family: "Font Awesome 6 Free"; font-style: normal; font-weight: 900; font-display: block; src: url("../fonts/fa-solid-subset.woff") format("woff"); }
+@font-face { font-family: "Font Awesome 6 Brands"; font-style: normal; font-weight: 400; font-display: block; src: url("../fonts/fa-brands-subset.woff") format("woff"); }
+.fa-solid, .fas, .fa-brands, .fab { display: inline-block; font-style: normal; font-variant: normal; line-height: 1; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width: 1.25em; text-align: center; }
+.fa-solid, .fas { font-family: "Font Awesome 6 Free"; font-weight: 900; }
+.fa-brands, .fab { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
+.fa-phone:before { content: "\f095"; }
+.fa-location-dot:before { content: "\f3c5"; }
+.fa-clock:before { content: "\f017"; }
+.fa-arrow-right:before { content: "\f061"; }
+.fa-bolt:before { content: "\f0e7"; }
+.fa-calendar-check:before { content: "\f274"; }
+.fa-plus:before { content: "\2b"; }
+.fa-check:before { content: "\f00c"; }
+.fa-chevron-right:before { content: "\f054"; }
+.fa-tooth:before { content: "\f5c9"; }
+.fa-house:before { content: "\f015"; }
+.fa-whatsapp:before { content: "\f232"; }
+.fa-facebook-f:before { content: "\f39e"; }

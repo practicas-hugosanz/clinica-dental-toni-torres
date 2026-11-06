@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://practicas-hugosanz.github.io/clinica-dental-toni-torres/sitemap.xml

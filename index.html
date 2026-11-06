@@ -31,10 +31,9 @@
 
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/favicon.png">
-<link rel="preload" href="assets/fonts/fraunces-soft-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/mrdafoe-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/toni-recorte.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="preload" href="assets/img/equipo-consulta.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
@@ -130,193 +129,275 @@
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<div class="topbar">
-  <div class="container topbar__inner">
-    <p class="open-now open-now--dark" data-open-now hidden></p>
-    <span class="topbar__item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Carrer Capità Antoni Mena, 153 · Elche</span>
-    <a class="topbar__item" href="https://wa.me/34614226860" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp 614 22 68 60</a>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="container site-header__bar">
-    <a class="brand" href="./" aria-label="Clínica Dental Toñi Torres, inicio"><img src="assets/img/logo.png" alt="Clínica Dental Toñi Torres" width="141" height="46"></a>
-    <nav class="nav" id="nav" aria-label="Principal">
-      <a href="#tratamientos">Tratamientos</a>
-      <a href="#clinica">La clínica</a>
-      <a href="#preguntas">Preguntas frecuentes</a>
-      <a href="#horario">Horario y contacto</a>
-    </nav>
-    <div class="header-actions">
-      <a class="header-phone" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
-      <a class="btn btn--accent" href="pedir-cita.html">Pedir cita</a>
-      <button class="btn btn--ghost menu-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="burger" aria-hidden="true"></span>Menú</button>
-    </div>
+<!-- Cabecera dentro del hero (se ve al cargar) -->
+<header class="hero-nav" aria-label="Cabecera">
+  <a class="hero-nav__brand" href="./" aria-label="Clínica Dental Toñi Torres, inicio"><img src="assets/img/logo-blanco.png" alt="Clínica Dental Toñi Torres" width="141" height="46"></a>
+  <nav class="pills" aria-label="Principal">
+    <a href="./" aria-current="page">Inicio</a>
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#clinica">La clínica</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="#horario">Contacto</a>
+  </nav>
+  <div class="hero-nav__actions">
+    <a class="btn btn--white btn--sm" href="pedir-cita.html">Pedir cita</a>
+    <button class="menu-btn menu-btn--glass" type="button" data-menu-open aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="burger" aria-hidden="true"></span></button>
   </div>
 </header>
 
+<!-- Cabecera compacta que aparece al bajar -->
+<div class="mini-header" id="mini-header">
+  <a class="mini-header__brand" href="./" aria-label="Clínica Dental Toñi Torres, inicio"><img src="assets/img/logo.png" alt="Clínica Dental Toñi Torres" width="122" height="40"></a>
+  <nav class="mini-header__nav" aria-label="Secundaria">
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#clinica">La clínica</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="#horario">Contacto</a>
+  </nav>
+  <a class="mini-header__phone" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
+  <a class="btn btn--accent btn--sm" href="pedir-cita.html">Pedir cita</a>
+  <button class="menu-btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="burger" aria-hidden="true"></span></button>
+</div>
+
+<!-- Menú a pantalla completa (móvil) -->
+<div class="menu" id="menu" hidden>
+  <div class="menu__top">
+    <img src="assets/img/logo.png" alt="" width="122" height="40">
+    <button class="menu-btn" type="button" data-menu-close aria-label="Cerrar menú"><i class="fa-solid fa-plus menu__x" aria-hidden="true"></i></button>
+  </div>
+  <nav class="menu__links" aria-label="Menú">
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#clinica">La clínica</a>
+    <a href="#preguntas">Preguntas frecuentes</a>
+    <a href="#horario">Horario y contacto</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--accent btn--lg" href="pedir-cita.html">Pedir cita online <span class="btn__dot"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a>
+    <a class="btn btn--line btn--lg" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
+  </div>
+</div>
+
 <main id="contenido">
 
+  <!-- HERO -->
   <section class="hero" aria-labelledby="t-hero">
-    <div class="container hero__grid">
-      <div class="hero__copy">
-        <h1 class="eyebrow" id="t-hero"><svg class="trio" viewBox="0 0 60 36" aria-hidden="true"><use href="#tooth" x="0" y="6" width="26" height="26" class="f-mint"/><use href="#tooth" x="34" y="6" width="26" height="26" class="f-sky"/><use href="#tooth" x="15" y="0" width="30" height="30" class="f-pink"/></svg>Clínica dental en Elche</h1>
-        <p class="hero__title"><span class="h1-main">Presume</span> <span class="h1-script">de sonrisa</span></p>
-        <p class="lead">Más de 20 años cuidando la salud dental de las familias de Elche, con atención personalizada y tecnología digital.</p>
-        <div class="hero__actions">
-          <a class="btn btn--accent btn--lg" href="pedir-cita.html">Pedir cita online <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--outline btn--lg" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
+    <div class="hero__frame">
+      <img class="hero__bg" src="assets/img/equipo-consulta.webp" alt="La doctora y su auxiliar atendiendo a un paciente en el gabinete de la Clínica Dental Toñi Torres" width="1600" height="1204" fetchpriority="high">
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <h1 id="t-hero"><span class="reveal-line">Tu clínica dental</span><span class="reveal-line hero__indent">en Elche</span></h1>
+        <p class="hero__lead">Más de 20 años cuidando la salud dental de las familias de Elche, con atención cercana y diagnóstico digital.</p>
+        <a class="btn btn--white btn--lg" href="pedir-cita.html">Pedir cita online <span class="btn__dot"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a>
+
+        <a class="glass-card" href="#clinica">
+          <img src="assets/img/recepcion-toni.webp" alt="" width="382" height="510">
+          <span class="glass-card__text">Toñi Torres y su equipo te atienden a pie de calle, en Capità Antoni Mena, 153.</span>
+          <span class="glass-card__foot"><span><i class="fa-solid fa-tooth" aria-hidden="true"></i> +20 años en Elche</span><i class="fa-solid fa-arrow-right glass-card__go" aria-hidden="true"></i></span>
+        </a>
+      </div>
+
+      <ul class="hero__chips" aria-label="Tratamientos más solicitados">
+        <li><a class="chip-link is-on" href="pedir-cita.html?motivo=Revisi%C3%B3n%20o%20limpieza">Revisión y limpieza</a></li>
+        <li><a class="chip-link" href="pedir-cita.html?motivo=Ortodoncia">Ortodoncia invisible</a></li>
+        <li><a class="chip-link" href="pedir-cita.html?motivo=Implantes">Implantes</a></li>
+        <li><a class="chip-link" href="pedir-cita.html?motivo=Est%C3%A9tica%20dental">Estética dental</a></li>
+        <li><a class="chip-link" href="pedir-cita.html?motivo=Urgencia">Urgencias</a></li>
+      </ul>
+
+      <div class="hero__bar">
+        <span>Clínica Dental Toñi Torres · Elche</span>
+        <a href="#sobre">Desliza para ver más <i class="fa-solid fa-arrow-right hero__down" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <nav class="progress-nav" aria-label="Secciones">
+      <a href="#tratamientos" data-progress="tratamientos"><span>Tratamientos</span><i></i></a>
+      <a href="#clinica" data-progress="clinica"><span>La clínica</span><i></i></a>
+      <a href="#preguntas" data-progress="preguntas"><span>Preguntas frecuentes</span><i></i></a>
+      <a href="#horario" data-progress="horario"><span>Horario y contacto</span><i></i></a>
+    </nav>
+  </section>
+
+  <!-- SOBRE NOSOTRAS -->
+  <section class="section about" id="sobre" aria-labelledby="t-sobre">
+    <div class="container">
+      <h2 class="visually-hidden" id="t-sobre">Sobre la clínica</h2>
+      <div class="about__grid">
+        <div class="about__faces" data-reveal>
+          <img src="assets/img/toni.webp" alt="Toñi Torres con el uniforme de la clínica" width="382" height="510" loading="lazy" decoding="async">
+          <img src="assets/img/trabajando.webp" alt="El equipo de la clínica durante una revisión" width="510" height="510" loading="lazy" decoding="async">
+        </div>
+        <p class="statement" data-words>Cuidamos la salud dental de toda la familia con tratamientos personalizados, tecnología digital y un trato cercano, para que salgas de la consulta con una sonrisa sana y segura.</p>
+      </div>
+
+      <div class="about__row">
+        <div class="about__text" data-reveal>
+          <p>Niños, adultos y mayores en un mismo centro, con nueve especialidades: desde la revisión periódica hasta la implantología y la estética dental.</p>
+          <a class="btn btn--line" href="#tratamientos">Ver tratamientos <span class="btn__dot"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a>
+        </div>
+        <figure class="about__photo" data-reveal>
+          <img src="assets/img/fachada.webp" alt="Fachada de la Clínica Dental Toñi Torres en el número 153 de Carrer Capità Antoni Mena, Elche" width="585" height="510" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNÓSTICO / EQUIPO -->
+  <section class="section feature" id="equipo" aria-labelledby="t-equipo">
+    <div class="container feature__grid">
+      <div class="feature__left">
+        <div class="feature__head" data-reveal>
+          <h2 id="t-equipo">Atención cercana y diagnóstico digital</h2>
+          <p>Radiografía y escaneado en pantalla para que veas lo mismo que vemos en consulta y entiendas cada paso de tu tratamiento.</p>
+        </div>
+
+        <div class="person" data-reveal>
+          <div class="person__photo">
+            <img src="assets/img/toni.webp" alt="Toñi Torres" width="382" height="510" loading="lazy" decoding="async">
+            <img class="person__thumb" src="assets/img/recepcion-toni.webp" alt="" width="382" height="510" loading="lazy" decoding="async">
+            <div class="person__calls">
+              <a href="tel:+34614226860" aria-label="Llamar a la clínica"><i class="fa-solid fa-phone" aria-hidden="true"></i></a>
+              <a class="is-wa" href="https://wa.me/34614226860" rel="noopener" aria-label="Escribir por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="person__info">
+            <h3>Toñi Torres</h3>
+            <p class="person__role">Clínica Dental Toñi Torres</p>
+            <p>Toñi Torres y su equipo te acompañan desde la primera visita hasta el final de tu tratamiento.</p>
+            <a class="btn btn--accent" href="pedir-cita.html">Pedir cita <span class="btn__dot btn__dot--light"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a>
+          </div>
         </div>
       </div>
 
-      <div class="hero__art">
-        <svg class="float float--mint" aria-hidden="true"><use href="#tooth"/></svg>
-        <svg class="float float--sky" aria-hidden="true"><use href="#tooth"/></svg>
-        <svg class="float float--pink" aria-hidden="true"><use href="#tooth"/></svg>
-        <div class="portrait">
-          <div class="portrait__disc"></div>
-          <img src="assets/img/toni-recorte.webp" alt="Toñi Torres, responsable de la Clínica Dental Toñi Torres en Elche" width="382" height="510" fetchpriority="high">
-        </div>
-        <div class="sticker sticker--family"><span class="sticker__teeth" aria-hidden="true"><svg><use href="#tooth"/></svg><svg><use href="#tooth"/></svg><svg><use href="#tooth"/></svg></span>Odontología para toda la familia</div>
-        <div class="signature" aria-hidden="true">
-          <span>Toñi Torres</span>
-          <svg viewBox="0 0 80 60" fill="none"><path d="M6 8c22 2 46 12 58 38"/><path d="M52 40l12 6 3-13"/></svg>
+      <div class="feature__media" data-reveal>
+        <img src="assets/img/equipo-consulta.webp" alt="Gabinete de la clínica con la radiografía panorámica en el monitor" width="1600" height="1204" loading="lazy" decoding="async">
+        <div class="stat-card">
+          <div class="stat-card__row">
+            <div><small>Horario</small><b>9:00<span>a 20:00</span></b></div>
+            <div><small>Atendemos</small><b>L–V<span>laborables</span></b></div>
+          </div>
+          <div class="stat-card__today">
+            <small id="today-label">Jornada de hoy</small><small id="today-pct"></small>
+          </div>
+          <div class="segments" id="today-bar" aria-hidden="true"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="tratamientos" aria-labelledby="t-tratamientos">
+  <!-- TRATAMIENTOS (carrusel) -->
+  <section class="section treatments" id="tratamientos" aria-labelledby="t-tratamientos">
     <div class="container">
-      <div class="section__head section__head--split" data-reveal>
-        <h2 id="t-tratamientos">Tratamientos dentales <span class="script">en Elche</span></h2>
-        <p>Desde la revisión periódica hasta la implantología. Elige un tratamiento para pedir cita directamente.</p>
+      <div class="treatments__head" data-reveal>
+        <h2 id="t-tratamientos">Tratamientos dentales en Elche</h2>
+        <div class="rail-nav">
+          <button type="button" class="round-btn" data-rail="-1" aria-label="Tratamientos anteriores"><i class="fa-solid fa-arrow-right round-btn__prev" aria-hidden="true"></i></button>
+          <button type="button" class="round-btn round-btn--on" data-rail="1" aria-label="Más tratamientos"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
       </div>
+    </div>
 
-      <ul class="cards">
-        <li class="card card--urgent" data-reveal>
-          <span class="card__ico card__ico--fa"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
-          <h3>Urgencias dentales</h3>
-          <p>Dolor, traumatismos o piezas fracturadas. Llámanos y te daremos cita lo antes posible.</p>
-          <div class="card__foot">
-            <a class="btn btn--accent" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>Llamar ahora</a>
-            <a class="card__link" href="pedir-cita.html?motivo=Urgencia">Pedir cita de urgencia <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </li>
-        <li class="card card--pink" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-general"/></svg>
+    <ul class="rail" id="rail">
+      <li class="tcard tcard--photo">
+        <img src="assets/img/trabajando.webp" alt="Revisión dental con el escaneado de la boca en el portátil" width="510" height="510" loading="lazy" decoding="async">
+        <div class="tcard__over">
           <h3>Odontología general</h3>
-          <p>Revisiones periódicas, limpieza profesional, empastes y diagnóstico con radiografía digital.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Revisi%C3%B3n%20o%20limpieza">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <p>Revisiones, limpieza profesional, empastes y diagnóstico con radiografía digital.</p>
+          <a class="tcard__link" href="pedir-cita.html?motivo=Revisi%C3%B3n%20o%20limpieza">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tcard tcard--pink">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-orto"/></svg>
+        <h3>Ortodoncia invisible y brackets</h3>
+        <p>Corrección de la posición dental con alineadores transparentes o brackets.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Ortodoncia">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--mint">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-impl"/></svg>
+        <h3>Implantología</h3>
+        <p>Reposición de piezas perdidas con implantes dentales.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Implantes">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--dark">
+        <span class="tcard__ico tcard__ico--fa"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+        <h3>Urgencias dentales</h3>
+        <p>Dolor, traumatismos o piezas fracturadas. Llámanos y te daremos cita lo antes posible.</p>
+        <div class="tcard__actions">
+          <a class="btn btn--accent btn--sm" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>Llamar ahora</a>
+          <a class="tcard__link" href="pedir-cita.html?motivo=Urgencia">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tcard tcard--sky">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-est"/></svg>
+        <h3>Estética dental</h3>
+        <p>Blanqueamiento, carillas y coronas para mejorar el color y la forma de los dientes.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Est%C3%A9tica%20dental">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--white">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-kids"/></svg>
+        <h3>Odontopediatría</h3>
+        <p>Atención dental para niños y adolescentes: revisiones, prevención y tratamiento de caries.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Ni%C3%B1os">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--pink">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-perio"/></svg>
+        <h3>Periodoncia</h3>
+        <p>Diagnóstico y tratamiento de las encías: gingivitis, periodontitis y mantenimiento.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Enc%C3%ADas">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--mint">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-cir"/></svg>
+        <h3>Cirugía oral</h3>
+        <p>Extracciones y pequeñas intervenciones de cirugía bucal.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Cirug%C3%ADa%20oral">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="tcard tcard--sky">
+        <svg class="tcard__ico" aria-hidden="true"><use href="#i-arm"/></svg>
+        <h3>Armonización orofacial</h3>
+        <p>Tratamientos faciales con ácido hialurónico.</p>
+        <a class="tcard__link" href="pedir-cita.html?motivo=Armonizaci%C3%B3n%20orofacial">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LA CLÍNICA -->
+  <section class="section clinic" id="clinica" aria-labelledby="t-clinica">
+    <div class="container">
+      <div class="split-head" data-reveal>
+        <p class="split-head__aside">A pie de calle en Carrer Capità Antoni Mena, 153, en Elche.</p>
+        <h2 id="t-clinica">Una clínica cercana, con atención profesional y tecnología avanzada para todas las edades.</h2>
+      </div>
+      <ul class="photo-cards">
+        <li data-reveal>
+          <figure>
+            <div class="photo-cards__img"><img src="assets/img/recepcion-toni.webp" alt="Toñi Torres en la recepción de la clínica dental, junto al logotipo" width="382" height="510" loading="lazy" decoding="async"><span class="tag-pill">Recepción</span></div>
+            <figcaption><h3>Te recibimos sin prisas</h3><p>Gestionamos tu cita y tu historial desde la recepción de la clínica.</p></figcaption>
+          </figure>
         </li>
-        <li class="card card--mint" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-kids"/></svg>
-          <h3>Odontopediatría</h3>
-          <p>Atención dental para niños y adolescentes: revisiones, prevención y tratamiento de caries.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Ni%C3%B1os">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <li data-reveal>
+          <figure>
+            <div class="photo-cards__img"><img src="assets/img/fachada-2.webp" alt="Exterior de la clínica dental en Elche, con el rótulo negro y el escaparate" width="680" height="510" loading="lazy" decoding="async"><span class="tag-pill">Acceso</span></div>
+            <figcaption><h3>A pie de calle</h3><p>Entrada directa desde la calle, bajo el rótulo negro del número 153.</p></figcaption>
+          </figure>
         </li>
-        <li class="card card--sky" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-orto"/></svg>
-          <h3>Ortodoncia invisible y brackets</h3>
-          <p>Corrección de la posición dental con alineadores transparentes o brackets.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Ortodoncia">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--pink" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-perio"/></svg>
-          <h3>Periodoncia</h3>
-          <p>Diagnóstico y tratamiento de las encías: gingivitis, periodontitis y mantenimiento.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Enc%C3%ADas">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--mint" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-cir"/></svg>
-          <h3>Cirugía oral</h3>
-          <p>Extracciones y pequeñas intervenciones de cirugía bucal.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Cirug%C3%ADa%20oral">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--sky" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-impl"/></svg>
-          <h3>Implantología</h3>
-          <p>Reposición de piezas perdidas con implantes dentales.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Implantes">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--pink" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-est"/></svg>
-          <h3>Estética dental</h3>
-          <p>Blanqueamiento, carillas y coronas para mejorar el color y la forma de los dientes.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Est%C3%A9tica%20dental">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--mint" data-reveal>
-          <svg class="card__ico" aria-hidden="true"><use href="#i-arm"/></svg>
-          <h3>Armonización orofacial</h3>
-          <p>Tratamientos faciales con ácido hialurónico.</p>
-          <a class="card__link" href="pedir-cita.html?motivo=Armonizaci%C3%B3n%20orofacial">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </li>
-        <li class="card card--cta" data-reveal>
-          <div class="card__cta-text">
-            <h3>¿No sabes qué tratamiento <span class="script">necesitas?</span></h3>
-            <p>Pide una revisión y te explicaremos tu diagnóstico y las opciones de tratamiento.</p>
-            <a class="btn btn--light" href="pedir-cita.html?motivo=Revisi%C3%B3n%20o%20limpieza">Pedir una revisión <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <img src="assets/img/trabajando.webp" alt="Revisión dental en la clínica con el escaneado de la boca en el portátil" width="510" height="510" loading="lazy" decoding="async">
+        <li data-reveal>
+          <figure>
+            <div class="photo-cards__img"><img src="assets/img/trabajando.webp" alt="Revisión en el sillón con el portátil mostrando el escaneado dental" width="510" height="510" loading="lazy" decoding="async"><span class="tag-pill">Gabinete</span></div>
+            <figcaption><h3>Tecnología en consulta</h3><p>Radiografía y escaneado digital para un diagnóstico más preciso.</p></figcaption>
+          </figure>
         </li>
       </ul>
+      <div class="center" data-reveal><a class="btn btn--accent" href="#horario">Cómo llegar <span class="btn__dot btn__dot--light"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a></div>
     </div>
   </section>
 
-  <section class="section section--clinic" id="clinica" aria-labelledby="t-clinica">
-    <div class="container visit">
-      <div class="visit__text" data-reveal>
-        <h2 id="t-clinica">Una clínica cercana <span class="script">en Elche</span></h2>
-        <p>A pie de calle en Carrer Capità Antoni Mena, 153. Atención profesional y tecnología avanzada para pacientes de todas las edades.</p>
-        <ol class="steps">
-          <li><span class="steps__n">1</span><div><h3>Acceso a pie de calle</h3><p>En el número 153 de Carrer Capità Antoni Mena, bajo el rótulo negro de la clínica.</p></div></li>
-          <li><span class="steps__n">2</span><div><h3>Atención personalizada</h3><p>Toñi Torres y su equipo te atienden y te acompañan durante todo el tratamiento.</p></div></li>
-          <li><span class="steps__n">3</span><div><h3>Diagnóstico digital</h3><p>Radiografía y escaneado en pantalla, para que veas lo mismo que vemos en consulta.</p></div></li>
-        </ol>
-        <a class="btn btn--dark" href="#horario">Ver horario y cómo llegar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-
-      <div class="gallery">
-        <figure class="snap snap--a" data-reveal>
-          <img src="assets/img/recepcion-toni.webp" alt="Toñi Torres en la recepción de la clínica dental, junto al logotipo" width="382" height="510" loading="lazy" decoding="async">
-          <figcaption>Recepción</figcaption>
-        </figure>
-        <figure class="snap snap--b" data-reveal>
-          <img src="assets/img/equipo-consulta.webp" alt="La doctora y su auxiliar atendiendo a un paciente en el gabinete, con la radiografía panorámica en el monitor" width="1600" height="1204" loading="lazy" decoding="async">
-          <figcaption>Gabinete</figcaption>
-        </figure>
-        <figure class="snap snap--c" data-reveal>
-          <img src="assets/img/fachada.webp" alt="Fachada de la Clínica Dental Toñi Torres en el número 153 de Carrer Capità Antoni Mena, Elche" width="585" height="510" loading="lazy" decoding="async">
-          <figcaption>Fachada</figcaption>
-        </figure>
-        <figure class="snap snap--d" data-reveal>
-          <img src="assets/img/fachada-2.webp" alt="Exterior de la clínica dental en Elche, con el escaparate de ortodoncia" width="680" height="510" loading="lazy" decoding="async">
-          <figcaption>Exterior</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="cita" aria-labelledby="t-cita">
-    <div class="container">
-      <div class="cta-band" data-reveal>
-        <div class="cta-band__text">
-          <h2 id="t-cita">Pide tu cita <span class="script">online</span></h2>
-          <p>Elige el motivo, el día y la hora que mejor te vengan. La clínica te confirma la cita por teléfono o WhatsApp.</p>
-        </div>
-        <div class="cta-band__actions">
-          <a class="btn btn--accent btn--lg" href="pedir-cita.html"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i>Pedir cita online</a>
-          <a class="btn btn--light btn--lg" href="https://wa.me/34614226860" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Escribir por WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="preguntas" aria-labelledby="t-preguntas">
+  <!-- PREGUNTAS -->
+  <section class="section faq-sec" id="preguntas" aria-labelledby="t-preguntas">
     <div class="container faq">
       <div class="faq__head" data-reveal>
-        <h2 id="t-preguntas">Preguntas <span class="script">frecuentes</span></h2>
-        <p>Si tienes cualquier otra duda, llámanos al <a class="link" href="tel:+34614226860">614 22 68 60</a>.</p>
+        <h2 id="t-preguntas">Preguntas frecuentes</h2>
+        <p>Si tienes cualquier otra duda, llámanos al <a class="link" href="tel:+34614226860">614 22 68 60</a> o escríbenos por <a class="link" href="https://wa.me/34614226860" rel="noopener">WhatsApp</a>.</p>
       </div>
       <div class="faq__list" data-reveal>
         <details>
@@ -347,11 +428,12 @@
     </div>
   </section>
 
-  <section class="section" id="horario" aria-labelledby="t-horario">
+  <!-- HORARIO Y CONTACTO -->
+  <section class="section contact-sec" id="horario" aria-labelledby="t-horario">
     <div class="container contact">
       <div class="hours" data-reveal>
-        <h2 id="t-horario">Horario y <span class="script">cómo llegar</span></h2>
-        <p class="open-now open-now--dark" data-open-now hidden></p>
+        <h2 id="t-horario">Horario y cómo llegar</h2>
+        <p class="open-now" data-open-now hidden></p>
         <ul class="timetable" id="timetable">
           <li data-dow="1"><span>Lunes</span><span>9:00 a 20:00</span></li>
           <li data-dow="2"><span>Martes</span><span>9:00 a 20:00</span></li>
@@ -361,26 +443,26 @@
           <li data-dow="6"><span>Sábado</span><span>Cerrado</span></li>
           <li data-dow="0"><span>Domingo</span><span>Cerrado</span></li>
         </ul>
-      </div>
-      <div class="contact__col" data-reveal>
         <address class="address">
           <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
           <span><b>Carrer Capità Antoni Mena, 153, bajo</b><br>03204 Elche, Alicante</span>
         </address>
-        <div class="contact-lines">
-          <a href="tel:+34614226860"><span class="ico-badge"><i class="fa-solid fa-phone" aria-hidden="true"></i></span><span><small>Teléfono</small>614 22 68 60</span></a>
-          <a href="https://wa.me/34614226860" rel="noopener"><span class="ico-badge ico-badge--wa"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span><span><small>WhatsApp</small>614 22 68 60</span></a>
-          <a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener"><span class="ico-badge ico-badge--fb"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span><span><small>Facebook</small>Clínica Dental Toñi Torres</span></a>
-        </div>
+      </div>
+      <div class="contact__col" data-reveal>
         <div class="map" id="map">
           <div class="map__ph">
             <span class="map__pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
             <p>El mapa se carga desde Google solo si lo pides.</p>
             <div class="map__actions">
-              <button class="btn btn--dark" type="button" id="load-map">Ver mapa aquí</button>
-              <a class="btn btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=38.2570897,-0.708478" rel="noopener">Cómo llegar</a>
+              <button class="btn btn--dark btn--sm" type="button" id="load-map">Ver mapa aquí</button>
+              <a class="btn btn--line btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=38.2570897,-0.708478" rel="noopener">Cómo llegar</a>
             </div>
           </div>
+        </div>
+        <div class="contact-lines">
+          <a href="tel:+34614226860"><span class="ico-badge"><i class="fa-solid fa-phone" aria-hidden="true"></i></span><span><small>Teléfono</small>614 22 68 60</span></a>
+          <a href="https://wa.me/34614226860" rel="noopener"><span class="ico-badge ico-badge--wa"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span><span><small>WhatsApp</small>614 22 68 60</span></a>
+          <a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener"><span class="ico-badge ico-badge--fb"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span><span><small>Facebook</small>Toñi Torres</span></a>
         </div>
       </div>
     </div>
@@ -390,22 +472,16 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer__cta">
-      <p class="footer__script">Presume de sonrisa</p>
-      <a class="btn btn--accent btn--lg" href="pedir-cita.html">Pedir cita <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="footer__top">
+      <h2>Tu sonrisa importa.<br>Pide cita hoy.</h2>
+      <div class="footer__cta">
+        <p>Elige motivo, día y hora y la clínica te confirma la cita por teléfono o WhatsApp.</p>
+        <a class="pill-field" href="pedir-cita.html"><span><i class="fa-solid fa-calendar-check" aria-hidden="true"></i>Reserva tu cita online</span><span class="btn btn--accent btn--sm">Pedir cita</span></a>
+      </div>
     </div>
     <div class="footer__grid">
-      <div class="footer__brand">
-        <img src="assets/img/logo-blanco.png" alt="Clínica Dental Toñi Torres" width="197" height="64" loading="lazy" decoding="async">
-        <p>Clínica dental en Elche con más de 20 años de experiencia.</p>
-        <div class="social">
-          <a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener" aria-label="Facebook de la Clínica Dental Toñi Torres"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-          <a href="https://wa.me/34614226860" rel="noopener" aria-label="WhatsApp de la clínica"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
-          <a href="tel:+34614226860" aria-label="Llamar a la clínica"><i class="fa-solid fa-phone" aria-hidden="true"></i></a>
-        </div>
-      </div>
       <nav aria-label="Clínica">
-        <h2>Clínica</h2>
+        <h3>Clínica</h3>
         <ul>
           <li><a href="#tratamientos">Tratamientos</a></li>
           <li><a href="#clinica">La clínica</a></li>
@@ -414,22 +490,31 @@
         </ul>
       </nav>
       <div>
-        <h2>Contacto</h2>
+        <h3>Horario</h3>
         <ul>
-          <li><a href="tel:+34614226860">614 22 68 60</a></li>
-          <li><a href="https://wa.me/34614226860" rel="noopener">WhatsApp</a></li>
-          <li><a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener">Facebook</a></li>
+          <li>Lunes a viernes</li>
+          <li>9:00 a 20:00</li>
+          <li>Sábados y domingos, cerrado</li>
         </ul>
       </div>
       <div>
-        <h2>Dirección</h2>
+        <h3>Legal</h3>
         <ul>
-          <li>Carrer Capità Antoni Mena, 153, bajo</li>
-          <li>03204 Elche, Alicante</li>
-          <li>Lunes a viernes, 9:00 a 20:00</li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
         </ul>
       </div>
+      <div class="footer__contact">
+        <h3>Estamos para ayudarte</h3>
+        <a class="footer__phone" href="tel:+34614226860">614 22 68 60</a>
+        <p>Carrer Capità Antoni Mena, 153, bajo · 03204 Elche</p>
+        <div class="social">
+          <a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener" aria-label="Facebook de la Clínica Dental Toñi Torres"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://wa.me/34614226860" rel="noopener" aria-label="WhatsApp de la clínica"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="tel:+34614226860" aria-label="Llamar a la clínica"><i class="fa-solid fa-phone" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </div>
+    <p class="footer__mark" aria-hidden="true">Toñi Torres</p>
     <div class="footer__base">
       <span>© Clínica Dental Toñi Torres · Dentista en Elche</span>
       <a href="privacidad.html">Política de privacidad</a>
@@ -438,7 +523,7 @@
 </footer>
 
 <div class="callbar" aria-label="Contacto rápido">
-  <a class="btn btn--outline" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>Llamar</a>
+  <a class="btn btn--line" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>Llamar</a>
   <a class="btn btn--accent" href="pedir-cita.html">Pedir cita</a>
 </div>
 

@@ -41,14 +41,35 @@
   }
   function daysBetween(a, b) { return Math.round((Date.UTC(b.y, b.m, b.d) - Date.UTC(a.y, a.m, a.d)) / 864e5); }
 
-  /* ---------- Menú móvil ---------- */
-  var toggle = $('.menu-toggle'), nav = $('#nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }); });
+  /* ---------- Menú a pantalla completa ---------- */
+  var menu = $('#menu'), lastOpener = null;
+  function setMenu(open) {
+    if (!menu) return;
+    menu.hidden = !open;
+    document.body.classList.toggle('menu-open', open);
+    $$('[data-menu-open]').forEach(function (b) { b.setAttribute('aria-expanded', String(open)); });
+    if (open) { var c = $('[data-menu-close]', menu); if (c) c.focus(); }
+    else if (lastOpener) lastOpener.focus();
+  }
+  $$('[data-menu-open]').forEach(function (b) { b.addEventListener('click', function () { lastOpener = b; setMenu(true); }); });
+  if (menu) {
+    $$('[data-menu-close]', menu).forEach(function (b) { b.addEventListener('click', function () { setMenu(false); }); });
+    $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { lastOpener = null; setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
+  }
+
+  /* ---------- Jornada de hoy (tarjeta del equipo) ---------- */
+  var bar = $('#today-bar');
+  if (bar) {
+    var SEG = 22, nowT = madridNow(), hT = CONFIG.hours[nowT.dow], pct = 0, label = 'Jornada de hoy', txt = '';
+    if (!hT || isClosedDay(nowT.y, nowT.m, nowT.d)) { label = 'Hoy la clínica está cerrada'; txt = ''; }
+    else {
+      var mins = nowT.h * 60 + nowT.min, a = hT[0] * 60, b = hT[1] * 60;
+      pct = Math.max(0, Math.min(1, (mins - a) / (b - a)));
+      txt = mins < a ? 'Abrimos a las ' + hT[0] + ':00' : mins >= b ? 'Jornada terminada' : Math.round(pct * 100) + '%';
+    }
+    for (var s = 0; s < SEG; s++) { var sp = document.createElement('span'); if (s < Math.round(pct * SEG)) sp.className = 'is-on'; bar.appendChild(sp); }
+    $('#today-label').textContent = label; $('#today-pct').textContent = txt;
   }
 
   /* ---------- Abierto ahora y horario ---------- */
@@ -296,15 +317,58 @@
   renderCal(); renderSlots(); sync();
 })();
 
-/* Detalles de interfaz: cabecera al hacer scroll y aparición suave de las secciones */
+/* Detalles de interfaz: cabecera compacta, texto que se revela al bajar, progreso por secciones,
+ * carrusel de tratamientos y aparición suave de los bloques. */
 (function () {
   'use strict';
-  var header = document.querySelector('.site-header');
-  if (header) {
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Frase de presentación: se parte en palabras que se van enfocando con el scroll
+  var statement = $('[data-words]'), words = [];
+  if (statement) {
+    statement.innerHTML = statement.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    words = $$('.w', statement);
   }
+
+  var mini = $('#mini-header'), hero = $('.hero__frame');
+  var progress = $$('[data-progress]').map(function (a) { return { a: a, sec: document.getElementById(a.getAttribute('data-progress')) }; });
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var vh = window.innerHeight, y = window.scrollY;
+    if (mini && hero && !mini.classList.contains('mini-header--static')) mini.classList.toggle('is-visible', y > hero.offsetHeight - 80);
+    if (words.length) {
+      var r = statement.getBoundingClientRect();
+      var p = reduce ? 1 : Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+      var on = Math.round(p * words.length);
+      for (var i = 0; i < words.length; i++) words[i].classList.toggle('is-on', i < on);
+    }
+    progress.forEach(function (o) {
+      if (!o.sec) return;
+      var rr = o.sec.getBoundingClientRect();
+      var pp = Math.max(0, Math.min(1, (vh * 0.5 - rr.top) / rr.height));
+      o.a.style.setProperty('--p', pp.toFixed(3));
+    });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // Carrusel de tratamientos
+  var rail = $('#rail');
+  if (rail) {
+    var btns = $$('[data-rail]');
+    var step = function () { var c = rail.querySelector('li'); return c ? c.getBoundingClientRect().width + 20 : 320; };
+    btns.forEach(function (b) { b.addEventListener('click', function () { rail.scrollBy({ left: step() * +b.getAttribute('data-rail'), behavior: reduce ? 'auto' : 'smooth' }); }); });
+    var upd = function () {
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      btns.forEach(function (b) { var dir = +b.getAttribute('data-rail'); b.disabled = dir < 0 ? rail.scrollLeft <= 2 : rail.scrollLeft >= max; });
+    };
+    rail.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+  }
+
   if (!('IntersectionObserver' in window)) return;
   Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function (el) {
     var p = el.parentElement;

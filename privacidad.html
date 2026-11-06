@@ -14,22 +14,34 @@
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<header class="site-header">
-  <div class="container site-header__bar">
-    <a class="brand" href="./" aria-label="Clínica Dental Toñi Torres, inicio"><img src="assets/img/logo.png" alt="Clínica Dental Toñi Torres" width="141" height="46"></a>
-    <nav class="nav" id="nav" aria-label="Principal">
-      <a href="./#tratamientos">Tratamientos</a>
-      <a href="./#clinica">La clínica</a>
-      <a href="./#preguntas">Preguntas frecuentes</a>
-      <a href="./#horario">Horario y contacto</a>
-    </nav>
-    <div class="header-actions">
-      <a class="header-phone" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
-      <a class="btn btn--accent" href="pedir-cita.html">Pedir cita</a>
-      <button class="btn btn--ghost menu-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="burger" aria-hidden="true"></span>Menú</button>
-    </div>
-  </div>
+<header class="mini-header mini-header--static is-visible" id="mini-header">
+  <a class="mini-header__brand" href="./" aria-label="Clínica Dental Toñi Torres, inicio"><img src="assets/img/logo.png" alt="Clínica Dental Toñi Torres" width="122" height="40"></a>
+  <nav class="mini-header__nav" aria-label="Principal">
+    <a href="./#tratamientos">Tratamientos</a>
+    <a href="./#clinica">La clínica</a>
+    <a href="./#preguntas">Preguntas</a>
+    <a href="./#horario">Contacto</a>
+  </nav>
+  <a class="mini-header__phone" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
+  <a class="btn btn--accent btn--sm" href="pedir-cita.html">Pedir cita</a>
+  <button class="menu-btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="burger" aria-hidden="true"></span></button>
 </header>
+<div class="menu" id="menu" hidden>
+  <div class="menu__top">
+    <img src="assets/img/logo.png" alt="" width="122" height="40">
+    <button class="menu-btn" type="button" data-menu-close aria-label="Cerrar menú"><i class="fa-solid fa-plus menu__x" aria-hidden="true"></i></button>
+  </div>
+  <nav class="menu__links" aria-label="Menú">
+    <a href="./#tratamientos">Tratamientos</a>
+    <a href="./#clinica">La clínica</a>
+    <a href="./#preguntas">Preguntas frecuentes</a>
+    <a href="./#horario">Horario y contacto</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--accent btn--lg" href="pedir-cita.html">Pedir cita online <span class="btn__dot"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a>
+    <a class="btn btn--line btn--lg" href="tel:+34614226860"><i class="fa-solid fa-phone" aria-hidden="true"></i>614 22 68 60</a>
+  </div>
+</div>
 <main class="legal" id="contenido">
   <div class="container">
     <h1>Política de privacidad</h1>
@@ -66,9 +78,52 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <div class="footer__base" style="margin-top:0;border-top:0;padding-top:0">
-      <span>Clínica Dental Toñi Torres</span>
-      <a href="./">Volver al inicio</a>
+    <div class="footer__top">
+      <h2>Tu sonrisa importa.<br>Pide cita hoy.</h2>
+      <div class="footer__cta">
+        <p>Elige motivo, día y hora y la clínica te confirma la cita por teléfono o WhatsApp.</p>
+        <a class="pill-field" href="pedir-cita.html"><span><i class="fa-solid fa-calendar-check" aria-hidden="true"></i>Reserva tu cita online</span><span class="btn btn--accent btn--sm">Pedir cita</span></a>
+      </div>
+    </div>
+    <div class="footer__grid">
+      <nav aria-label="Clínica">
+        <h3>Clínica</h3>
+        <ul>
+          <li><a href="./#tratamientos">Tratamientos</a></li>
+          <li><a href="./#clinica">La clínica</a></li>
+          <li><a href="./#preguntas">Preguntas frecuentes</a></li>
+          <li><a href="pedir-cita.html">Pedir cita</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Horario</h3>
+        <ul>
+          <li>Lunes a viernes</li>
+          <li>9:00 a 20:00</li>
+          <li>Sábados y domingos, cerrado</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h3>Estamos para ayudarte</h3>
+        <a class="footer__phone" href="tel:+34614226860">614 22 68 60</a>
+        <p>Carrer Capità Antoni Mena, 153, bajo · 03204 Elche</p>
+        <div class="social">
+          <a href="https://www.facebook.com/people/clinica-dental-to%c3%b1i-torres/61556763503545/" rel="noopener" aria-label="Facebook de la Clínica Dental Toñi Torres"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://wa.me/34614226860" rel="noopener" aria-label="WhatsApp de la clínica"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="tel:+34614226860" aria-label="Llamar a la clínica"><i class="fa-solid fa-phone" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__mark" aria-hidden="true">Toñi Torres</p>
+    <div class="footer__base">
+      <span>© Clínica Dental Toñi Torres · Dentista en Elche</span>
+      <a href="privacidad.html">Política de privacidad</a>
     </div>
   </div>
 </footer>
